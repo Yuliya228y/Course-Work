@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
    <children>
-      <Label fx:id="labelBalance" layoutX="496.0" layoutY="15.0" prefHeight="32.0" prefWidth="90.0" text="Баланс: " />
-      <Label fx:id="labelShop" layoutX="14.0" layoutY="8.0" prefHeight="32.0" prefWidth="71.0" text="Магазин: " />
-      <Button fx:id="buttonSale" layoutX="410.0" layoutY="81.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="131.0" text="Продать" />
-      <Button fx:id="buttonBuy" layoutX="410.0" layoutY="120.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="131.0" text="Купить" />
-      <TabPane fx:id="tabPane" layoutX="14.0" layoutY="54.0" prefHeight="332.0" prefWidth="221.0" tabClosingPolicy="UNAVAILABLE">
+      <Label fx:id="labelBalance" layoutX="496.0" layoutY="14.0" prefHeight="32.0" prefWidth="187.0" text="Баланс: " />
+      <Label fx:id="labelShop" layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="221.0" text="Магазин: " />
+      <Button fx:id="buttonSale" layoutX="496.0" layoutY="54.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="131.0" text="Продать" />
+      <Button fx:id="buttonBuy" layoutX="496.0" layoutY="87.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="131.0" text="Купить" />
+      <TabPane fx:id="tabPane" layoutX="14.0" layoutY="54.0" prefHeight="332.0" prefWidth="221.0" style="-fx-border-color: #9a9a9a; -fx-border-radius: 0;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="tabeDelete" text="Есть в наличии">
             <content>
               <AnchorPane fx:id="paneDelete" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox fx:id="vboxDelete" prefHeight="302.0" prefWidth="185.0" />
+                        <ScrollPane prefHeight="300.0" prefWidth="221.0">
+                           <content>
+                              <VBox fx:id="vboxDelete" prefHeight="661.0" prefWidth="207.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
             </content>
@@ -29,12 +35,22 @@
             <content>
               <AnchorPane fx:id="paneAdd" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox fx:id="vboxAdd" prefHeight="302.0" prefWidth="185.0" />
+                        <ScrollPane prefHeight="302.0" prefWidth="221.0">
+                           <content>
+                              <VBox fx:id="vboxAdd" prefHeight="657.0" prefWidth="209.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
         </tabs>
       </TabPane>
+      <Button fx:id="buttonAdd" layoutX="497.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Добавить" />
+      <TextField fx:id="fieldCost" layoutX="496.0" layoutY="361.0" prefHeight="25.0" prefWidth="131.0" promptText="цена" />
+      <TextField fx:id="fieldBreed" layoutX="496.0" layoutY="286.0" prefHeight="25.0" prefWidth="131.0" promptText="порода" />
+      <TextField fx:id="fieldID" layoutX="496.0" layoutY="321.0" prefHeight="25.0" prefWidth="131.0" promptText="ID" />
+      <TextField fx:id="fieldName" layoutX="497.0" layoutY="253.0" prefHeight="25.0" prefWidth="131.0" promptText="имя" />
+      <CheckBox fx:id="checkPassport" layoutX="497.0" layoutY="398.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Наличие пасспорта" />
    </children>
 </AnchorPane>

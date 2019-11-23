@@ -9,7 +9,7 @@ public class Pet {
     private String name;
     private String breed;
     private boolean passport;
-    List<Pet> petList = new ArrayList<>();
+    public static List<Pet> petList = new ArrayList<>();
 
     public Pet(){
         cost = 100;
@@ -59,11 +59,11 @@ public class Pet {
         this.breed = breed;
     }
 
-    public void add(Pet pet){
+    public static void add(Pet pet){
         petList.add(pet);
     }
 
-    public boolean isPassport() {
+    public boolean getPassport() {
         return passport;
     }
 

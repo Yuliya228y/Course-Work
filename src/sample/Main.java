@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../FXml/sample.fxml"));
         primaryStage.setTitle("Pet Shop");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 690, 465));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
