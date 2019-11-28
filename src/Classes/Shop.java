@@ -9,6 +9,12 @@ public class Shop {
     private Pet pet;
     public List<Pet> petList = new ArrayList<>();
 
+    public Shop(){
+        setBalance(10000);
+        setShop("Shop");
+    }
+
+
     public int getBalance() { return balance; }
 
     public void setBalance(int balance) {

@@ -6,14 +6,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Classes.Pet;
+import Classes.Shop;
+import Database.DBHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 public class Controller {
-    private Pet pet;
-    List<CheckBox> checkList = new ArrayList<>();
+    private List<CheckBox> checkAdd = new ArrayList<>();
+    private List<CheckBox> checkDelete = new ArrayList<>();
+    private DBHandler connect;
 
     @FXML
     private ResourceBundle resources;
@@ -74,20 +77,37 @@ public class Controller {
 
     @FXML
     void initialize() {
-        labelShop.setText("Магазин: Барсик&Марсик");
+        Shop zooShop = new Shop();
+        zooShop.setShop("Магазин: Барсик&Марсик");
+        labelShop.setText(zooShop.getShop());
+
         buttonAdd.setOnAction(actionEvent -> {
             Pet pet = new Pet(Integer.parseInt(fieldCost.getText()), Integer.parseInt(fieldID.getText()), fieldName.getText(), fieldBreed.getText(), false);
             if(checkPassport.isSelected()) pet.setPassport(true);
+            connect.insertInto(pet);
             Pet.add(pet);
             CheckBox checkBox = new CheckBox();
-            if(pet.getPassport() == true) {
+            if(pet.getPassport()) {
                 checkBox.setText("Имя: " + pet.getName() + "\nПорода: " + pet.getBreed() + "\nID: " + pet.getId() + "\nЦена: " + pet.getCost() + "\nС пасспортом\n" + "\n");
-            } else if (pet.getPassport() == false) {
+            } else if (!pet.getPassport()) {
                 checkBox.setText("Имя: " + pet.getName() + "\nПорода: " + pet.getBreed() + "\nID: " + pet.getId() + "\nЦена: " + pet.getCost() + "\nБез пасспорта\n" + "\n");
             }
-
+            checkAdd.add(checkBox);
             vboxAdd.getChildren().add(checkBox);
 
         });
+
+        buttonBuy.setOnAction(actionEvent -> {
+            for(int i = 0; i < checkAdd.size(); i++){
+                if(checkAdd.get(i).isSelected()){
+                    vboxDelete.getChildren().add(checkAdd.get(i));
+                    checkDelete.add(checkAdd.get(i));
+                    checkAdd.remove(i);
+                }
+            }
+        });
+
+
+
     }
 }

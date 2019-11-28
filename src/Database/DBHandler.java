@@ -1,5 +1,7 @@
 package Database;
 
+import Classes.Pet;
+
 import java.sql.*;
 
 public class DBHandler extends Config {
@@ -15,5 +17,17 @@ public class DBHandler extends Config {
         connection = DriverManager.getConnection(connectionString, dbUser, dbPass);
 
         return connection;
+    }
+
+    public void insertInto(Pet pet){
+        try {
+            connection = DriverManager.getConnection(connectionString, dbUser, dbPass);
+            stmt = connection.createStatement();
+            String query = "INSERT INTO pets (ID, Name, Cost, Passport, Breed) " +
+                    "VALUES(" + pet.getId() + ", '" + pet.getName() + "', " + pet.getCost() + ", " + pet.getPassport() + ", '" + pet.getBreed() + "');";
+            stmt.executeUpdate(query);
+        }catch (SQLException sqlEx){
+            sqlEx.printStackTrace();
+        }
     }
 }
