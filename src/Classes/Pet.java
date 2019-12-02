@@ -71,7 +71,7 @@ public class Pet {
         this.passport = passport;
     }
 
-    public void sold(Pet pet){
+    public static void sold(Pet pet){
         petList.remove(pet.getId());
     }
 
